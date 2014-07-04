@@ -1,0 +1,11 @@
+{
+  "name": "Jira Column Points",
+  "version": "0.1",
+  "description": "Sums column points.",
+  "content_scripts": [
+    {
+      "matches": ["*://ordergroove.atlassian.net/secure/RapidBoard.jspa/*"],
+      "js": ["calculator.js"]
+    }
+  ]
+}

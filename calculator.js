@@ -1,47 +1,38 @@
-var jiraPoints = (function(document){
+var jiraPoints = function(){
     var headers = document.querySelectorAll('.ghx-column-headers .ghx-column'),
-        cols = document.querySelectorAll('.ghx-column.ui-sortable'),
-        results = [],
-        initialized = false;
+        cols = document.querySelectorAll('.ghx-columns')[0].childNodes,
+        results = [];
 
-    var initialize = function() {
-        for (var i = 0; i < headers.length; i++) {
-            headers[i].querySelector('h2').innerHTML += "<div></div>";
-        };
-        initialized = true;
-        calculate();
+    for (var i = 0; i < headers.length; i++) {
+        headers[i].querySelector('h2').innerHTML += "<div style='background: #cdcdcd; border-radius: 8px; font-size: 10px; width: 25px; text-align: center; position: absolute; bottom: 5px; right: 5px;'></div>";
     };
-    
-    var calculate = function() {
-        for (var i = 0; i < headers.length; i++) {
-            var col_points = 0,
-                curr_col = cols[i],
-                issues = curr_col.querySelectorAll('.ghx-issue');
 
-            for (var j = 0; j < issues.length; j++) {
-                var curr_issue = issues[j],
-                    issue_points = parseFloat(curr_issue.querySelector('span.aui-badge').innerHTML);
+    for (var i = 0; i < headers.length; i++) {
+        var col_points = 0,
+            curr_col = cols[i],
+            issues = curr_col.querySelectorAll('.ghx-issue');
 
-                if (issue_points && !isNaN(issue_points)) {
-                    col_points += issue_points;
-                }
-            }
-            results.push({"name": headers[i].querySelector('h2').innerHTML,"points" : col_points});
-            headers[i].querySelector('h2 div').innerHTML = "<b>(" + col_points + ")</b>";
+        for (var j = 0; j < issues.length; j++) {
+            var curr_issue = issues[j],
+                issue_points = parseFloat(curr_issue.querySelector('span.aui-badge').innerHTML);
 
-        };
-        console.log('Done!');
-    }
+            if (issue_points && !isNaN(issue_points)) {
+                col_points += issue_points;
+            }
+        }
+        results.push({"name": headers[i].querySelector('h2').innerHTML,"points" : col_points});
+        headers[i].querySelector('h2 div').innerHTML = "<b>" + col_points + "</b>";
 
-    if(!initialized) {
-        initialize();
-    }
-    else {
-        calculate();
-    }
+    };
+    console.log('Done!');
+};
 
-    return {
-        update : calculate
-    }
-    // Type jiraPoints.update() to refresh
-})(document);
+jiraPoints();
+var target = document.getElementById('gh');
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        jiraPoints();
+    });    
+});
+var config = { attributes: true, childList: true, characterData: true };
+observer.observe(target, config);

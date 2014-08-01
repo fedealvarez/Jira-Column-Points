@@ -1,11 +1,29 @@
 {
   "name": "Jira Column Points",
-  "version": "0.1",
-  "description": "Sums column points.",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This extension calculates the sum of story points for each column in Jira",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "page_action": {
+    "default_icon": "icons/icon48.png",
+    "default_title": "Jira Column Points"
+  },
+  "permissions": [
+    "https://*.atlassian.net/secure/RapidBoard.jspa?*"
+  ],
   "content_scripts": [
     {
-      "matches": ["*.atlassian.net/secure/RapidBoard.jspa/*"],
-      "js": ["calculator.js"]
+      "matches": [
+        "https://*.atlassian.net/secure/RapidBoard.jspa?*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ],
+      "run_at": "document_end"
     }
   ]
 }

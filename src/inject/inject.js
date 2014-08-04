@@ -15,17 +15,17 @@ var jiraPoints = function(){
 
 	        for (var j = 0; j < issues.length; j++) {
 	            var curr_issue = issues[j],
-	                issue_points = parseFloat(curr_issue.querySelector('span.aui-badge').innerHTML);
+	                issue_points = curr_issue.querySelector('span.aui-badge');
 
-	            if (issue_points && !isNaN(issue_points)) {
-	                col_points += issue_points;
+	            if (issue_points && !isNaN(parseFloat(issue_points.innerHTML))) {
+	                col_points += parseFloat(issue_points.innerHTML);
 	            }
 	        }
 	        results.push({'name': headers[i].querySelector('h2').innerHTML,'points' : col_points});
 	        headers[i].querySelector('h2 div').innerHTML = '<b>' + col_points + '</b>';
 
 	    }
-	    console.log('Done!');
+	    //console.log('Done!');
     }
     catch(e) {}
 };

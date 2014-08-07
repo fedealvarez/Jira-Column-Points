@@ -1,11 +1,17 @@
 var jiraPoints = function(){
     try {
     	var headers = document.querySelectorAll('.ghx-column-headers .ghx-column'),
-        cols = document.querySelectorAll('.ghx-columns')[0].childNodes,
-        results = [];
+        	cols = document.querySelectorAll('.ghx-columns')[0].childNodes,
+        	results = [],
+        	total_points = 0,
+        	board_name = document.getElementById('ghx-board-name');
+
+        if(!document.getElementById('jcp-board-points')) {
+        	board_name.innerHTML += '<div id="jcp-board-points" style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; display: inline; padding: 0 2px; font-weight: bold; margin: 6px; position: absolute;"></div>';
+        }
 
 	    for (var i = 0; i < headers.length; i++) {
-	        headers[i].querySelector('h2').innerHTML += '<div style="background: #cdcdcd; border-radius: 8px; font-size: 12px; width: 25px; text-align: center; position: absolute; bottom: 5px; right: 5px;"></div>';
+	        headers[i].querySelector('h2').innerHTML += '<div style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; text-align: center; position: absolute; bottom: 5px; right: 5px; padding: 0 2px;"></div>';
 	    }
 
 	    for (var i = 0; i < headers.length; i++) {
@@ -23,9 +29,10 @@ var jiraPoints = function(){
 	        }
 	        results.push({'name': headers[i].querySelector('h2').innerHTML,'points' : col_points});
 	        headers[i].querySelector('h2 div').innerHTML = '<b>' + col_points + '</b>';
-
+	        total_points += col_points;
 	    }
-	    //console.log('Done!');
+	    
+	    document.getElementById('jcp-board-points').innerHTML = total_points;
     }
     catch(e) {}
 };

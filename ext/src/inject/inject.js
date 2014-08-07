@@ -7,7 +7,7 @@ var jiraPoints = function(){
         	board_name = document.getElementById('ghx-board-name');
 
         if(!document.getElementById('jcp-board-points')) {
-        	board_name.innerHTML += '<div id="jcp-board-points" style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; display: inline; padding: 0 2px; font-weight: bold; margin: 6px; position: absolute;"></div>';
+        	board_name.innerHTML += '<div id="jcp-board-points" style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; display: inline; padding: 0 2px; font-weight: bold; margin: 6px; position: absolute; text-align: center"></div>';
         }
 
 	    for (var i = 0; i < headers.length; i++) {

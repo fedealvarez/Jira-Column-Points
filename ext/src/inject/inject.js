@@ -4,11 +4,10 @@ var jiraPoints = function(){
             cols = document.querySelectorAll('.ghx-columns')[0].childNodes,
             results = [],
             total_points = 0,
-            board_header = document.getElementById('ghx-view-selector'),
-            board_name = board_header.getElementsByTagName('h1')[0];
+            board_header = document.getElementById('ghx-modes-tools');
 
         if(!document.getElementById('jcp-board-points')) {
-            board_name.innerHTML += '<span id="jcp-board-points" style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; display: inline; padding: 0 2px; font-weight: bold; margin: 9px 0; position: absolute; text-align: center"></span>';
+            board_header.innerHTML += '<div id="jcp-board-points" style="background: #cdcdcd; border-radius: 10px; font-size: 12px; min-width: 20px; display: inline; padding: 0 3px; font-weight: bold; margin: 6px 10px; position: relative; float:left; text-align: center"></div>';
         }
 
         for (var i = 0; i < headers.length; i++) {

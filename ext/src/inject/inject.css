@@ -1,0 +1,25 @@
+#jcp-board-points {
+    background: #cdcdcd;
+    border-radius: 10px;
+    font-size: 12px;
+    min-width: 20px;
+    display: inline;
+    padding: 0 3px;
+    font-weight: bold;
+    margin: 6px 10px;
+    position: relative;
+    float: left;
+    text-align: center
+}
+
+.jcp-col-points {
+    background: #cdcdcd;
+    border-radius: 10px;
+    font-size: 12px;
+    min-width: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 0 2px;
+}

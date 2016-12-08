@@ -3,7 +3,7 @@ Jira-Column-Points
 
 This Chrome extension it's an add-on for the Jira board. It allows the user to see the sum of the story points on the header of each column.
 
-##Installing
+##Installation
 
 ###Option 1
 1. Download the file 'Jira-Column-Points.crx' (located under pack folder).
